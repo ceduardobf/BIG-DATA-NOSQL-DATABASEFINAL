@@ -12,6 +12,7 @@
 ## QUESTÃO 1 - Consulta Básica com Filtros
 
 ### Comando Utilizado
+´´´
 db.movies.find(
   {
     genres: "Drama",
@@ -34,7 +35,6 @@ db.movies.find(
 )
 .sort({ "imdb.rating": -1 })
 .limit(20)
-
 
 ```
 
