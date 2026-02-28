@@ -12,7 +12,7 @@
 ## QUESTÃO 1 - Consulta Básica com Filtros
 
 ### Comando Utilizado
-´´´
+```
 db.movies.find(
   {
     genres: "Drama",
