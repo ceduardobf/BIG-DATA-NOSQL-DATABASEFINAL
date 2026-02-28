@@ -143,12 +143,12 @@ db.movies.aggregate([
 |---------|------|------------|--------------|
 | 1º | Gèrard Depardieu | 67 | 6.69 |
 | 2º | Robert De Niro | 58 | 6.96 |
-| 3º | Michael Caine | | |
-| 4º | | | |
-| 5º | | | |
+| 3º | Michael Caine | 51 | 6.71 |
+| 4º | Bruce Willis | 49 | 6.41 |
+| 5º | Samuel L. Jackson | 48 | 6.4 |
 
 ### Screenshot
-_[Anexar screenshot ou indicar arquivo: questao03.png]_
+Ver arquivo anexo.
 
 ### Observações (opcional)
 
