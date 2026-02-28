@@ -58,10 +58,28 @@ Ver arquivos anexos.
 
 ### Pipeline Utilizada
 ```javascript
-// Cole aqui sua pipeline de agregação
 db.movies.aggregate([
-
-
+  {
+    $match: {
+      countries: { $exists: true, $type: "array", $ne: [] }
+    }
+  },
+  { $unwind: "$countries" },
+  {
+    $group: {
+      _id: "$countries",
+      totalFilmes: { $sum: 1 }
+    }
+  },
+  { $sort: { totalFilmes: -1 } },
+  { $limit: 10 },
+  {
+    $project: {
+      _id: 0,
+      country: "$_id",
+      totalFilmes: 1
+    }
+  }
 ])
 ```
 
@@ -69,16 +87,16 @@ db.movies.aggregate([
 
 | Posição | País | Quantidade de Filmes |
 |---------|------|----------------------|
-| 1º | | |
-| 2º | | |
-| 3º | | |
-| 4º | | |
-| 5º | | |
-| 6º | | |
-| 7º | | |
-| 8º | | |
-| 9º | | |
-| 10º | | |
+| 1º | USA | 10921 | 
+| 2º | UK | 2652 |
+| 3º | France | 2647 |
+| 4º | Germany | 1494 |
+| 5º | Canada | 1260 |
+| 6º | Italy | 1217 |
+| 7º | Japan | 786 |
+| 8º | Spain | 675 |
+| 9º | India | 564 |
+| 10º | Australia | 470 |
 
 ### Screenshot
 _[Anexar screenshot ou indicar arquivo: questao02.png]_
