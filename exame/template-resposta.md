@@ -2,34 +2,53 @@
 
 ## IDENTIFICAÇÃO
 
-**Nome completo:** _____________________________________________  
+**Nome completo:** CARLOS EDUARDO BEZERRA FERREIRA  
 **Matrícula:** ____________________  
-**Email:** ________________________________________  
-**Data:** ___/___/______
+**Email:** CEDUARDOBF@GMAIL.COM  
+**Data:** 27 / 02 / 2026
 
 ---
 
 ## QUESTÃO 1 - Consulta Básica com Filtros
 
 ### Comando Utilizado
-```javascript
-// Cole aqui seu comando find()
+db.movies.find(
+  {
+    genres: "Drama",
+    year: {
+      $gte: 2010,
+      $lte: 2015
+    },
+    "imdb.rating": {
+      $gt: 7.5,
+      $type: "number"
+    }
+  },
+  {
+    _id: 0,
+    title: 1,
+    year: 1,
+    genres: 1,
+    "imdb.rating": 1
+  }
+)
+.sort({ "imdb.rating": -1 })
+.limit(20)
 
 
 ```
 
 ### Resultado Obtido
-- **Quantidade de documentos encontrados:** ______
+- **Quantidade de documentos encontrados:** 352
 - **5 primeiros filmes (título e rating):**
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
+  1. Drishyam
+  2. Most Likely to Succeed
+  3. Kaakkaa Muttai
+  4. Killswitch
+  5. The Great Alone
 
 ### Screenshot
-_[Anexar screenshot ou indicar arquivo: questao01.png]_
-
+Ver arquivos anexos.
 ### Observações (opcional)
 
 
