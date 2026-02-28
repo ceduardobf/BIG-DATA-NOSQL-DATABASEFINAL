@@ -35,7 +35,6 @@ db.movies.find(
 )
 .sort({ "imdb.rating": -1 })
 .limit(20)
-
 ```
 
 ### Resultado Obtido
@@ -109,11 +108,32 @@ Ver arquivos anexos.
 ## QUESTÃO 3 - Pipeline com $unwind e $group
 
 ### Pipeline Utilizada
-```javascript
-// Cole aqui sua pipeline de agregação
+```
 db.movies.aggregate([
-
-
+  {
+    $match: {
+      cast: { $exists: true, $type: "array", $ne: [] },
+      "imdb.rating": { $exists: true, $type: "number" }
+    }
+  },
+  { $unwind: "$cast" },
+  {
+    $group: {
+      _id: "$cast",
+      totalFilmes: { $sum: 1 },
+      mediaRating: { $avg: "$imdb.rating" }
+    }
+  },
+  { $sort: { totalFilmes: -1 } },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      ator: "$_id",
+      totalFilmes: 1,
+      mediaRating: { $round: ["$mediaRating", 2] }
+    }
+  }
 ])
 ```
 
@@ -121,9 +141,9 @@ db.movies.aggregate([
 
 | Posição | Ator | Qtd Filmes | Rating Médio |
 |---------|------|------------|--------------|
-| 1º | | | |
-| 2º | | | |
-| 3º | | | |
+| 1º | Gèrard Depardieu | 67 | 6.69 |
+| 2º | Robert De Niro | 58 | 6.96 |
+| 3º | Michael Caine | | |
 | 4º | | | |
 | 5º | | | |
 
