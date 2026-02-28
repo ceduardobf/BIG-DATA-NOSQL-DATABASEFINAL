@@ -57,7 +57,7 @@ Ver arquivos anexos.
 ## QUESTÃO 2 - Agregação com Agrupamento
 
 ### Pipeline Utilizada
-```javascript
+```
 db.movies.aggregate([
   {
     $match: {
@@ -99,7 +99,7 @@ db.movies.aggregate([
 | 10º | Australia | 470 |
 
 ### Screenshot
-_[Anexar screenshot ou indicar arquivo: questao02.png]_
+Ver arquivos anexos.
 
 ### Observações (opcional)
 
