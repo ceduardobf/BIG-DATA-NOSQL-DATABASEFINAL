@@ -232,25 +232,25 @@ db.comments.aggregate([
 ### Resultado Obtido
 
 **Filme 1:**
-- Título: 
-- Ano: 
-- Quantidade de comentários: 
+- Título: The Taking of Pelham 1 2 3
+- Ano: 2009
+- Quantidade de comentários: 161
 - Primeiros 3 usuários:
-  1. Nome: __________ | Email: __________
-  2. Nome: __________ | Email: __________
-  3. Nome: __________ | Email: __________
+  1. Nome: Ashlee Hart | Email: ashlee_hart@fakegmail.com
+  2. Nome: Sandor Clegane | Email: rory_mccann@gameofthron.es
+  3. Nome: Justin Williams | Email: justin_williams@fakegmail.com
 
 **Filme 2:**
-- Título: 
-- Ano: 
-- Quantidade de comentários: 
+- Título: About a Boy
+- Ano: 2002
+- Quantidade de comentários: 158
 - Primeiros 3 usuários:
-  1. Nome: __________ | Email: __________
-  2. Nome: __________ | Email: __________
-  3. Nome: __________ | Email: __________
+  1. Nome: Jon Snow | Email: kit_harington@gameofthron.es
+  2. Nome: Viserys Targaryen | Email: harry_lloyd@gameofthron.es
+  3. Nome: Shawn Mccormick | Email: shawn_mccormick@fakegmail.com
 
 ### Screenshot
-_[Anexar screenshot ou indicar arquivo: questao04.png]_
+Ver arquivos anexos.
 
 ### Observações (opcional)
 
