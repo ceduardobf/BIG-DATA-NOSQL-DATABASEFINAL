@@ -302,7 +302,8 @@ db.movies.aggregate([
 ### Resultado Obtido
 
 | Gênero | Qtd Filmes | Rating Médio |
-|News|44|7.25|
+
+|  News  |     44     |     7.25     |
 
 ### Explicação
 Esses gêneros são considerados subestimados porque possuem uma quantidade relativamente pequena de filmes na base, mas apresentam rating médio elevado. Isso indica que, embora apareçam menos vezes, seus filmes tendem a ter boa qualidade, segundo a avaliação do IMDB.
