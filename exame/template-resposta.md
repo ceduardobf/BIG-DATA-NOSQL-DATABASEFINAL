@@ -259,28 +259,54 @@ Ver arquivos anexos.
 ## QUESTÃO 5 - Agregação com Múltiplos Estágios
 
 ### Pipeline Utilizada
-```javascript
-// Cole aqui sua pipeline completa
+```
 db.movies.aggregate([
-
-
+  {
+    $match: {
+      genres: { $exists: true, $type: "array", $ne: [] },
+      "imdb.rating": { $exists: true, $type: "number" }
+    }
+  },
+  {
+    $unwind: "$genres"
+  },
+  {
+    $group: {
+      _id: "$genres",
+      quantidadeFilmes: { $sum: 1 },
+      ratingMedio: { $avg: "$imdb.rating" }
+    }
+  },
+  {
+    $match: {
+      quantidadeFilmes: { $gte: 10, $lte: 50 },
+      ratingMedio: { $gt: 7.0 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      genero: "$_id",
+      quantidadeFilmes: 1,
+      ratingMedio: { $round: ["$ratingMedio", 2] }
+    }
+  },
+  {
+    $sort: {
+      ratingMedio: -1
+    }
+  }
 ])
 ```
 
 ### Resultado Obtido
 
 | Gênero | Qtd Filmes | Rating Médio |
-|--------|------------|--------------|
-| | | |
-| | | |
-| | | |
-| | | |
+|News|44|7.25|
 
 ### Explicação
-**Por que esses gêneros são considerados subestimados?**
-
+Esses gêneros são considerados subestimados porque possuem uma quantidade relativamente pequena de filmes na base, mas apresentam rating médio elevado. Isso indica que, embora apareçam menos vezes, seus filmes tendem a ter boa qualidade, segundo a avaliação do IMDB.
 
 ### Screenshot
-_[Anexar screenshot ou indicar arquivo: questao07.png]_
-
+Ver arquivo anexo.
 ---
