@@ -158,11 +158,74 @@ Ver arquivo anexo.
 ## QUESTÃO 4 - Agregação com $lookup
 
 ### Pipeline Utilizada
-```javascript
-// Cole aqui sua pipeline com $lookup
-db.movies.aggregate([
-
-
+```
+db.comments.aggregate([
+  {
+    $match: {
+      movie_id: { $exists: true }
+    }
+  },
+  {
+    $group: {
+      _id: "$movie_id",
+      totalComentarios: { $sum: 1 }
+    }
+  },
+  {
+    $sort: {
+      totalComentarios: -1
+    }
+  },
+  {
+    $limit: 5
+  },
+  {
+    $lookup: {
+      from: "movies",
+      localField: "_id",
+      foreignField: "_id",
+      as: "movie"
+    }
+  },
+  {
+    $unwind: "$movie"
+  },
+  {
+    $lookup: {
+      from: "comments",
+      let: { movieId: "$_id" },
+      pipeline: [
+        {
+          $match: {
+            $expr: { $eq: ["$movie_id", "$$movieId"] }
+          }
+        },
+        {
+          $sort: { date: 1 }
+        },
+        {
+          $limit: 3
+        },
+        {
+          $project: {
+            _id: 0,
+            name: 1,
+            email: 1
+          }
+        }
+      ],
+      as: "primeirosUsuarios"
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      title: "$movie.title",
+      year: "$movie.year",
+      totalComentarios: 1,
+      primeirosUsuarios: 1
+    }
+  }
 ])
 ```
 
