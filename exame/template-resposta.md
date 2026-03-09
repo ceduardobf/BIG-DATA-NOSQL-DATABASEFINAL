@@ -227,12 +227,12 @@ db.comments.aggregate([
 - Ano: 2004
 - Quantidade de comentários: 158
 - Primeiros 3 usuários:
-  1. Nome: Jon Snow | Email: kit_harington@gameofthron.es
-  2. Nome: Viserys Targaryen | Email: harry_lloyd@gameofthron.es
-  3. Nome: Shawn Mccormick | Email: shawn_mccormick@fakegmail.com
+  1. Nome: Ashlee Hart | Email: ashlee_hart@fakegmail.com
+  2. Nome: Nichole Miller | Email: nichole_miller@fakegmail.com
+  3. Nome: Paul Bailey | Email: paul_bailey@fakegmail.com
 
 ### Screenshot
-Ver arquivos anexos.
+Ver arquivo PDF anexo.
 
 ### Observações (opcional)
 
