@@ -36,7 +36,7 @@ db.movies.find(
   5. The Great Alone
 
 ### Screenshot
-Ver arquivos anexos.
+Ver arquivo PDF anexo.
 ### Observações (opcional)
 
 
