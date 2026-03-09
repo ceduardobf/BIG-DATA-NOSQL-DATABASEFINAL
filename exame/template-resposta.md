@@ -54,23 +54,23 @@ Ver arquivo PDF anexo.
 db.movies.aggregate([
   {
     $match: {
-      countries: { $exists: true, $ne: [] }
+      countries: { $exists: true, $type: "array", $ne: [] }
     }
   },
   { $unwind: "$countries" },
   {
     $group: {
       _id: "$countries",
-      totalFilmes: { $sum: 1 }
+      quantidade: { $sum: 1 }
     }
   },
-  { $sort: { totalFilmes: -1 } },
+  { $sort: { quantidade: -1 } },
   { $limit: 10 },
   {
     $project: {
       _id: 0,
-      country: "$_id",
-      totalFilmes: 1
+      pais: "$_id",
+      quantidade: 1
     }
   }
 ])
