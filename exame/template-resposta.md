@@ -14,14 +14,19 @@
 ### Comando Utilizado
 ```
 db.movies.find(
-  { genres: "Drama",
+  {
+    genres: "Drama",
     year: { $gte: 2010, $lte: 2015 },
-    "imdb.rating": { $gt: 7.5 }},
-  { _id: 0,
+    "imdb.rating": { $gt: 7.5 }
+  },
+  {
+    _id: 0,
     title: 1,
     year: 1,
     genres: 1,
-    "imdb.rating": 1})
+    "imdb.rating": 1
+  }
+)
 .sort({ "imdb.rating": -1 })
 .limit(20)
 ```
@@ -49,7 +54,7 @@ Ver arquivo PDF anexo.
 db.movies.aggregate([
   {
     $match: {
-      countries: { $exists: true, $type: "array", $ne: [] }
+      countries: { $exists: true, $ne: [] }
     }
   },
   { $unwind: "$countries" },
@@ -87,7 +92,7 @@ db.movies.aggregate([
 | 10º | Australia | 470 |
 
 ### Screenshot
-Ver arquivos anexos.
+Ver arquivo PDF anexo.
 
 ### Observações (opcional)
 
@@ -101,26 +106,26 @@ Ver arquivos anexos.
 db.movies.aggregate([
   {
     $match: {
-      cast: { $exists: true, $type: "array", $ne: [] },
-      "imdb.rating": { $exists: true, $type: "number" }
+      cast: { $exists: true, $ne: [] },
+      "imdb.rating": { $exists: true }
     }
   },
   { $unwind: "$cast" },
   {
     $group: {
       _id: "$cast",
-      totalFilmes: { $sum: 1 },
-      mediaRating: { $avg: "$imdb.rating" }
+      quantidadeFilmes: { $sum: 1 },
+      ratingMedio: { $avg: "$imdb.rating" }
     }
   },
-  { $sort: { totalFilmes: -1 } },
+  { $sort: { quantidadeFilmes: -1 } },
   { $limit: 5 },
   {
     $project: {
       _id: 0,
       ator: "$_id",
-      totalFilmes: 1,
-      mediaRating: { $round: ["$mediaRating", 2] }
+      quantidadeFilmes: 1,
+      ratingMedio: { $round: ["$ratingMedio", 2] }
     }
   }
 ])
@@ -137,7 +142,7 @@ db.movies.aggregate([
 | 5º | Samuel L. Jackson | 48 | 6.4 |
 
 ### Screenshot
-Ver arquivo anexo.
+Ver arquivo PDF anexo.
 
 ### Observações (opcional)
 
