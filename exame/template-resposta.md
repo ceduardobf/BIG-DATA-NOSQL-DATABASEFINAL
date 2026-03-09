@@ -282,7 +282,7 @@ db.movies.aggregate([
 |  News  |     44     |     7.25     |
 
 ### Explicação
-Esses gêneros são considerados subestimados porque possuem uma quantidade relativamente pequena de filmes na base, mas apresentam rating médio elevado. Isso indica que, embora apareçam menos vezes, seus filmes tendem a ter boa qualidade, segundo a avaliação do IMDB.
+Esse gênero é considerado subestimado porque possui uma quantidade relativamente pequena de filmes na base, mas apresenta rating médio elevado. Isso indica que, embora apareça menos vezes, seus filmes tendem a ter boa qualidade, segundo a avaliação do IMDB.
 
 ### Screenshot
 Ver arquivo PDF anexo.
