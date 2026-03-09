@@ -245,13 +245,11 @@ Ver arquivo PDF anexo.
 db.movies.aggregate([
   {
     $match: {
-      genres: { $exists: true, $type: "array", $ne: [] },
-      "imdb.rating": { $exists: true, $type: "number" }
+      genres: { $exists: true, $ne: [] },
+      "imdb.rating": { $exists: true }
     }
   },
-  {
-    $unwind: "$genres"
-  },
+  { $unwind: "$genres" },
   {
     $group: {
       _id: "$genres",
@@ -273,11 +271,7 @@ db.movies.aggregate([
       ratingMedio: { $round: ["$ratingMedio", 2] }
     }
   },
-  {
-    $sort: {
-      ratingMedio: -1
-    }
-  }
+  { $sort: { ratingMedio: -1 } }
 ])
 ```
 
@@ -291,5 +285,5 @@ db.movies.aggregate([
 Esses gêneros são considerados subestimados porque possuem uma quantidade relativamente pequena de filmes na base, mas apresentam rating médio elevado. Isso indica que, embora apareçam menos vezes, seus filmes tendem a ter boa qualidade, segundo a avaliação do IMDB.
 
 ### Screenshot
-Ver arquivo anexo.
+Ver arquivo PDF anexo.
 ---
