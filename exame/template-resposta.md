@@ -106,8 +106,8 @@ Ver arquivo PDF anexo.
 db.movies.aggregate([
   {
     $match: {
-      cast: { $exists: true, $ne: [] },
-      "imdb.rating": { $exists: true }
+      cast: { $exists: true, $type: "array", $ne: [] },
+      "imdb.rating": { $exists: true, $type: "number" }
     }
   },
   { $unwind: "$cast" },
@@ -245,8 +245,8 @@ Ver arquivo PDF anexo.
 db.movies.aggregate([
   {
     $match: {
-      genres: { $exists: true, $ne: [] },
-      "imdb.rating": { $exists: true }
+      genres: { $exists: true, $type: "array", $ne: [] },
+      "imdb.rating": { $exists: true, $type: "number" }
     }
   },
   { $unwind: "$genres" },
