@@ -3,7 +3,7 @@
 ## IDENTIFICAÇÃO
 
 **Nome completo:** CARLOS EDUARDO BEZERRA FERREIRA  
-**Matrícula:** ____________________  
+**Matrícula:** 2427537  
 **Email:** CEDUARDOBF@GMAIL.COM  
 **Data:** 27 / 02 / 2026
 
