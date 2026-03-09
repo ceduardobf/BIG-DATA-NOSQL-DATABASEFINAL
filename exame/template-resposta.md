@@ -165,14 +165,8 @@ db.comments.aggregate([
       totalComentarios: { $sum: 1 }
     }
   },
-  {
-    $sort: {
-      totalComentarios: -1
-    }
-  },
-  {
-    $limit: 5
-  },
+  { $sort: { totalComentarios: -1 } },
+  { $limit: 5 },
   {
     $lookup: {
       from: "movies",
@@ -181,9 +175,7 @@ db.comments.aggregate([
       as: "movie"
     }
   },
-  {
-    $unwind: "$movie"
-  },
+  { $unwind: "$movie" },
   {
     $lookup: {
       from: "comments",
@@ -194,12 +186,8 @@ db.comments.aggregate([
             $expr: { $eq: ["$movie_id", "$$movieId"] }
           }
         },
-        {
-          $sort: { date: 1 }
-        },
-        {
-          $limit: 3
-        },
+        { $sort: { date: 1 } },
+        { $limit: 3 },
         {
           $project: {
             _id: 0,
@@ -235,8 +223,8 @@ db.comments.aggregate([
   3. Nome: Justin Williams | Email: justin_williams@fakegmail.com
 
 **Filme 2:**
-- Título: About a Boy
-- Ano: 2002
+- Título: 50 First Dates
+- Ano: 2004
 - Quantidade de comentários: 158
 - Primeiros 3 usuários:
   1. Nome: Jon Snow | Email: kit_harington@gameofthron.es
