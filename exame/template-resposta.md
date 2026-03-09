@@ -14,25 +14,14 @@
 ### Comando Utilizado
 ```
 db.movies.find(
-  {
-    genres: "Drama",
-    year: {
-      $gte: 2010,
-      $lte: 2015
-    },
-    "imdb.rating": {
-      $gt: 7.5,
-      $type: "number"
-    }
-  },
-  {
-    _id: 0,
+  { genres: "Drama",
+    year: { $gte: 2010, $lte: 2015 },
+    "imdb.rating": { $gt: 7.5 }},
+  { _id: 0,
     title: 1,
     year: 1,
     genres: 1,
-    "imdb.rating": 1
-  }
-)
+    "imdb.rating": 1})
 .sort({ "imdb.rating": -1 })
 .limit(20)
 ```
